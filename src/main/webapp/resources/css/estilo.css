@@ -1,0 +1,16 @@
+a, .page, .dropdown-header{ 
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 400; 
+}
+.row.header{
+	margin-bottom: 0px;
+}
+#map-canvas{
+	width: auto;
+	height: 100%;
+}
+#canvas-map{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
