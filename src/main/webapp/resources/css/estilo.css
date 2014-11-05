@@ -10,7 +10,7 @@ a, .page, .dropdown-header{
 	height: 100%;
 }
 #canvas-map{
-	width: 100%;
+	width: 95%;;
 	height: 100%;
 	position: absolute;
 }

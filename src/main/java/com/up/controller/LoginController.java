@@ -1,15 +1,16 @@
 package com.up.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.up.model.Usuario;
 import com.up.service.UsuarioService;
-import com.up.validador.Login;
 
 @Controller
 public class LoginController {
@@ -18,15 +19,23 @@ public class LoginController {
     private UsuarioService usuarioService;
 	
 	@RequestMapping(value = "/login", method=RequestMethod.POST)
-    public String login(@ModelAttribute Login novo, Model model) {
+    public ModelAndView login(HttpServletRequest request,HttpServletResponse res) {
+		String usuario = request.getParameter("usuario");  
+        String senha   = request.getParameter("senha");  
+        ModelAndView model = new ModelAndView("Principal");
 		
-		if(novo.getUsuario().equalsIgnoreCase("admin") && novo.getSenha().equalsIgnoreCase("admin")){
-			Usuario atual = usuarioService.getUsuarioById(novo.getUsuario());
+		if(usuario.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")){
+			Usuario atual = new Usuario();
 			
-			model.addAttribute("usuario", atual);
+			atual.setEmail("admin@admin.com.br");
+			atual.setLogin("admin");
+			atual.setSenha("admin");
+			atual.setNome("Admin");
+			
+			model.addObject("usuario", atual);
 		}
 		
-        return "principal";
+        return model;
     }
 	
 }

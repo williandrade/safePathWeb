@@ -1,25 +1,25 @@
 var map;
-var locais;
+var locais = [];
+var iterator = 0;
+var markers = [];
 
 $(document).ready(function() {
-	getLocais();
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 });
 
 function getLocais() {
-	console.log("entrou");
 	$.ajax({
         url: "getLocais",
         type: "POST",
-//        data: JSON.stringify(json),
          
         beforeSend: function(xhr) {
             xhr.setRequestHeader("Accept", "application/json");
             xhr.setRequestHeader("Content-Type", "application/json");
         },
-        success: function(Locais) {
-            console.log(Locais);
+        success: function(resp) {
+        	locais = resp;
+            drop();
         }
     });
 }
@@ -36,15 +36,10 @@ function initialize() {
 			var pos = new google.maps.LatLng(position.coords.latitude,
 					position.coords.longitude);
 
-			var infowindow = new google.maps.InfoWindow({
-				map : map,
-				position : pos,
-				content : 'Location found using HTML5.'
-			});
-
 			map.setCenter(pos);
-			map.setZoom(15);
-
+			map.setZoom(10);
+			
+			getLocais();
 		}, function() {
 			handleNoGeolocation(true);
 		});
@@ -69,4 +64,29 @@ function handleNoGeolocation(errorFlag) {
 
 	var infowindow = new google.maps.InfoWindow(options);
 	map.setCenter(options.position);
+}
+
+function drop() {
+	for (var i = 0; i < locais.length; i++) {
+		setTimeout(function() {
+			addMarker();
+		}, i * 500);
+	}
+}
+
+function addMarker() {
+	var marker = new google.maps.Marker({
+		position : new google.maps.LatLng(locais[iterator].latitude, locais[iterator].longitude),
+		map : map,
+		draggable : false,
+		animation : google.maps.Animation.DROP
+	});
+	var infowindow = new google.maps.InfoWindow({
+	      content: 'Teste'
+	  });
+	google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.open(map,marker);
+	  });
+	markers.push(marker);
+	iterator++;
 }

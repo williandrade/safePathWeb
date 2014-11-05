@@ -34,10 +34,10 @@
 	<div class="blur"></div>
 	<div class="container">
 <div>
-	<button class="btn btn-lg btn-success btn-block pull-right cadastre" type="submit">Cadastro</button>
+	<a href="Cadastro" class="btn btn-lg btn-success btn-block pull-right cadastre" role="button">Cadastre-se</a>
 </div>
 
-		<form class="form-signin" role="form">
+		<form class="form-signin" role="form" method="POST" action="login">
 			<h2 class="form-signin-heading">Login</h2>
 			<input type="text" class="form-control" placeholder="Usuario"
 				required name="usuario" autofocus> <input type="password"

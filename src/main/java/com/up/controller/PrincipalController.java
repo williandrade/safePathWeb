@@ -1,5 +1,8 @@
 package com.up.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.up.validador.Locais;
 
 @Controller
@@ -20,11 +24,20 @@ public class PrincipalController {
 	}
 	
 	@RequestMapping(value= "/getLocais", method = RequestMethod.POST, 
-			produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+			produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Locais getLocais(){
-		Locais novo = new Locais("William", -25.472958, -49.124149, 1);
-		return novo;
+	public String getLocais(){
+		List<Locais> tudo = new ArrayList<Locais>();
+		
+		tudo.add(new Locais("William", -25.472958, -49.125149, 1));
+		tudo.add(new Locais("Maria", -25.472958, -49.124149, 2));
+		tudo.add(new Locais("Jose", -25.472958, -49.123149, 3));
+		
+		Gson gson = new Gson();
+		
+		String retorno = gson.toJson(tudo);
+		
+		return retorno;
 	}
    
 }
