@@ -22,6 +22,7 @@
   <script type="text/javascript" src="http://ehesp.github.io/Responsive-Dashboard/js/ng-bootstrap-tpls.min.js"></script>
   <script type="text/javascript" src="http://ehesp.github.io/Responsive-Dashboard/js/angular/bootstrap.js"></script>
   <script type="text/javascript" src="<c:url value="resources/js/jquery-git2.js" />"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -50,7 +51,7 @@
       </ul>
       <div class="sidebar-footer">
         <div class="col-xs-6">
-          <a href="https://github.com/Ehesp/Responsive-Dashboard" target="_blank">
+          <a href="#" data-toggle="modal" data-target="#feedback-modal" target="_blank">
             FeedBack
           </a>
         </div>

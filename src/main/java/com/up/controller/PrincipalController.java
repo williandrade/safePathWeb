@@ -3,6 +3,9 @@ package com.up.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.up.model.Feedback;
 import com.up.validador.Locais;
 
 @Controller
@@ -40,4 +44,15 @@ public class PrincipalController {
 		return retorno;
 	}
    
+	@RequestMapping(value= "/sendFeedback", method = RequestMethod.POST)
+	@ResponseBody
+	public void sendFeedBack(HttpServletRequest request,HttpServletResponse res){
+		String feedbackText = request.getParameter("feedbackText");  
+		Feedback fb = new Feedback(feedbackText, "admin");
+		System.out.println("Registrando feedback: " + feedbackText);
+		
+		Gson gson = new Gson();
+		
+		String retorno = gson.toJson(fb);
+	}
 }
