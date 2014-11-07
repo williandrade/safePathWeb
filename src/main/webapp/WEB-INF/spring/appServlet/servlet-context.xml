@@ -29,7 +29,7 @@
 		destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url"
-			value="jdbc:mysql://localhost/safePath" />
+			value="jdbc:mysql://localhost/safepath" />
 		<beans:property name="username" value="root" />
 		<beans:property name="password" value="positivo" />
 	</beans:bean>
