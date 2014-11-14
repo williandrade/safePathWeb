@@ -41,13 +41,11 @@
 
                 $('#apollo-register-form').submit(function(e){
                 	e.preventDefault();
-
-                	app.form.handleRegister($(this));
+                	
+                	app.form.handleRegister($(this), e);
                 });
 
                  $('#apollo-forgotten-password-form').submit(function(e){
-                	e.preventDefault();
-
                 	app.form.handleForgottenPassword($(this));
                 });
 
@@ -73,32 +71,14 @@
             		}).popover('show');
         		}	           	
             },
-            handleRegister: function (form) {
-            	var fName = $('#firstName').val(),
-            		data = form.serialize();
-
-            	if(app.checkUserAccount('register', form)){
-					var register = $('.apollo-register'),
-            			email = register.find('[type="text"]:first').parents('.control-group');
-
-            		email.addClass('error').find('input:first').popover({
-            			title: 'Ooops!',
-            			content: 'It looks like you already have an account with that email address.',
-            			trigger: 'manual',
-            			placement: 'right'
-            		}).popover('show');
-            	}
-            	else {
-            		if(fName.length){
-	            		$('.user-name').text(', '+fName);
-	            	}
-
-					$('.apollo-register').fadeOut(350, function(){
-						$('.apollo-registering').fadeIn(350);
-					});
-            	}
-
-				// Handle the user's details (data) here via AJAX...
+            handleRegister: function (form, event) {
+            		if($('#registerEmail').val() == " " && $('#registerLogin').val() == " " && $('#registerSenha').val() == " "){
+            			alert("Todos os campos são obrigatórios");
+            		}
+            		else{
+            			console.log($('#registerEmail').val());
+            			form.submit();
+            		}
             },
             handleForgottenPassword: function(form){
             	if(app.checkUserAccount('forgottenPassword', form)){

@@ -1,5 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,21 +45,23 @@
 				</div>
 
 				<div class="apollo-register">
-					<form class="form-signin" id="apollo-register-form">
+					<form class="form-signin" id="apollo-register-form" method="POST" action="Cadastro">
 						<div class="control-group">
 							<input type="text" value="" id="registerEmail"
 								class="input-block-level email" name="email"
-								placeholder="E-mail">
+								placeholder="E-mail" required>
 						</div>
 
 						<div class="control-group">
-							<input type="password" value="" class="input-block-level"
-								placeholder="Senha" name="senha">
+							<input type="text" value="" id="registerLogin" 
+							class="input-block-level"
+								placeholder="Login" name="login" required>
 						</div>
 
 						<div class="control-group">
-							<input type="password" value="" class="input-block-level"
-								placeholder="Confirmar Senha" name="senhaConfirmacao">
+							<input type="password" value="" id="registerSenha" 
+							class="input-block-level"
+								placeholder="Senha" name="senha" required>
 						</div>
 
 
@@ -67,12 +69,12 @@
 
 						<div class="control-group">
 							<input type="text" value="" class="input-block-level"
-								id="firstName" placeholder="Primeiro Nome" name="primeiroNome">
+								id="firstName" placeholder="Primeiro Nome" name="primeiroNome" required>
 						</div>
 
 						<div class="control-group">
 							<input type="text" value="" class="input-block-level"
-								id="lastName" placeholder="Ultimo Nome" name="segundoNome">
+								id="lastName" placeholder="Ultimo Nome" name="segundoNome" required>
 						</div>
 
 
@@ -91,7 +93,7 @@
 
 					<p class="apollo-seperator">ou</p>
 
-					<form class="form-signin" id="apollo-login-form" method="GET" action="login">
+					<form class="form-signin" id="apollo-login-form" method="POST" action="login">
 						<div class="control-group">
 							<input type="text" value="" class="input-block-level email"
 								placeholder="Usuario" id="usuario" name="usuario">
