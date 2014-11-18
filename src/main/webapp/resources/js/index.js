@@ -77,7 +77,21 @@
             		}
             		else{
             			console.log($('#registerEmail').val());
-            			form.submit();
+            			
+            			$.ajax({
+            		        url: "Cadastro",
+            		        type: "POST",
+            		        data: form.serialize(),
+            		        beforeSend: function(xhr) {
+            		            xhr.setRequestHeader("Accept", "application/json");
+            		        },
+            		        success: function(resp) {
+            		        	console.log(resp);
+            		        },
+            		        error: function(errorMessage) {
+            	                   console.log(errorMessage);
+        	                }
+            		    });
             		}
             },
             handleForgottenPassword: function(form){
