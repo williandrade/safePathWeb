@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,49 +32,154 @@
 </head>
 
 <body>
-	<div class="blur"></div>
-	<div class="container">
-<div>
-	<a href="Cadastro" class="btn btn-lg btn-success btn-block pull-right cadastre" role="button">Cadastre-se</a>
-</div>
+	<div class="content">
+		<div class="logo">
+			<h1>
+				<strong>Safe</strong>Path
+			</h1>
+		</div>
+		<div class="apollo">
+			<div class="apollo-container clearfix">
+				<div class="apollo-facebook">
+					<div class="apollo-image"></div>
+				</div>
 
-		<form class="form-signin" role="form" method="POST" action="login">
-			<h2 class="form-signin-heading">Login</h2>
-			<input type="text" class="form-control" placeholder="Usuario"
-				required name="usuario" autofocus> <input type="password"
-				class="form-control" placeholder="Senha" name="senha" required>
-			<div class="checkbox">
-				<label> <input type="checkbox" value="lembre-me">
-					lembre-me
-				</label>
+				<div class="apollo-register">
+					<form class="form-signin" id="apollo-register-form" method="POST" action="Cadastro">
+						<div class="control-group">
+							<input type="text" value="" id="registerEmail"
+								class="input-block-level email" name="email"
+								placeholder="E-mail" required>
+						</div>
+
+						<div class="control-group">
+							<input type="text" value="" id="registerLogin" 
+							class="input-block-level"
+								placeholder="Login" name="login" required>
+						</div>
+
+						<div class="control-group">
+							<input type="password" value="" id="registerSenha" 
+							class="input-block-level"
+								placeholder="Senha" name="senha" required>
+						</div>
+
+
+						<p class="apollo-seperator">Sobre Você</p>
+
+						<div class="control-group">
+							<input type="text" value="" class="input-block-level"
+								id="firstName" placeholder="Primeiro Nome" name="primeiroNome" required>
+						</div>
+
+						<div class="control-group">
+							<input type="text" value="" class="input-block-level"
+								id="lastName" placeholder="Ultimo Nome" name="segundoNome" required>
+						</div>
+
+
+						<button class="btn btn-large btn-block btn-primary" type="submit">Registrar</button>
+					</form>
+
+					<p class="apollo-back">
+						<a href="#"><i class="icon-arrow-left"></i> Voltar ao Login</a>
+					</p>
+				</div>
+
+				<div class="apollo-login">
+					<button class="btn btn-block btn-facebook btn-large">
+						Conectar usando o <strong>Facebook</strong>
+					</button>
+
+					<p class="apollo-seperator">ou</p>
+
+					<form class="form-signin" id="apollo-login-form" method="POST" action="login">
+						<div class="control-group">
+							<input type="text" value="" class="input-block-level email"
+								placeholder="Usuario" id="usuario" name="usuario">
+						</div>
+
+						<div class="control-group">
+							<input type="password" value="" class="input-block-level"
+								placeholder="Senha" id="senha" name="senha">
+						</div>
+
+						<button class="btn btn-large btn-block" type="submit">Entrar</button>
+					</form>
+
+					<p class="apollo-register-account">
+						<a href="#" class="register-link">Não possui uma conta? <strong>Registre
+						</strong><i class="icon-arrow-right"></i></a><br> <a href="#"
+							class="password-link"><small>Esqueceu a senha?</small></a>
+					</p>
+				</div>
+
+				<div class="apollo-forgotten-password">
+					<form class="form-signin" id="apollo-forgotten-password-form">
+						<div class="control-group">
+							<input type="text" value="" class="input-block-level email"
+								placeholder="Email" name="email">
+						</div>
+						<button class="btn btn-large btn-block btn-primary" type="submit">Resetar
+							Senha</button>
+					</form>
+
+					<p class="apollo-back">
+						<a href="#"><i class="icon-arrow-left"></i> Voltar ao Login</a>
+					</p>
+				</div>
+
+				<div class="apollo-logging-in">
+					<h2>
+						Welcome back<span class="user-name"></span>!
+					</h2>
+					<p>
+						<strong>Please wait whilst we securely log you in…</strong>
+					</p>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Phasellus dignissim enim suscipit massa ornare rutrum.</p>
+				</div>
+
+				<div class="apollo-registering">
+					<h2>
+						Obrigado por se registrar <span class="user-name"></span>!
+					</h2>
+					<p>
+						<strong>We've sent you an activation email, blah blah...</strong>
+					</p>
+					<p>Nullam ac erat nunc. Donec in orci purus, vel tempor tortor.
+						Integer tincidunt ipsum sed ipsum scelerisque malesuada.</p>
+				</div>
+
+				<div class="apollo-password-reset">
+					<h2>Check your email</h2>
+					<p>
+						<strong>We've sent you a link, blah blah...</strong>
+					</p>
+					<p>Nullam ac erat nunc. Donec in orci purus, vel tempor tortor.
+						Integer tincidunt ipsum sed ipsum scelerisque malesuada.</p>
+				</div>
 			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-		</form>
-
+		</div>
 	</div>
-	<!-- /container -->
-
-
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
+		type="text/javascript"></script>
+	<script type="text/javascript" charset="utf-8"
+		src="<c:url value="/resources/js/jquery.tubular.1.0.js" />"></script>
+	<script type="text/javascript" charset="utf-8" src="<c:url value="/resources/js/md5.js" />"></script>
+	<script type="text/javascript" charset="utf-8" src="<c:url value="/resources/js/index.js" />"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		/*!
-		 * IE10 viewport hack for Surface/desktop Windows 8 bug
-		 * Copyright 2014 Twitter, Inc.
-		 * Licensed under the Creative Commons Attribution 3.0 Unported License. For
-		 * details, see http://creativecommons.org/licenses/by/3.0/.
-		 */
-
-		// See the Getting Started docs for more information:
-		// http://getbootstrap.com/getting-started/#support-ie10-width
-		(function() {
-			'use strict';
-			if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-				var msViewportStyle = document.createElement('style')
-				msViewportStyle.appendChild(document
-						.createTextNode('@-ms-viewport{width:auto!important}'))
-				document.querySelector('head').appendChild(msViewportStyle)
-			}
-		})();
+		$().ready(function() {
+			$('.content').tubular({
+				videoId : 'CDMN1aQ6I6c',
+				mute : true,
+				repeat : true
+			});
+		});
 	</script>
 </body>
 </html>

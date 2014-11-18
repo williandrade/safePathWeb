@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,8 +32,8 @@
 </head>
 <div class="container">
 	<h1>Preencha os Campos!</h1>
-	<p>Cadastrando-se você tem acesso a adicionar novos assaltos e
-		traçar rotas inteligentes para seu destino.</p>
+	<p>Cadastrando-se vocÃª tem acesso a adicionar novos assaltos e
+		traÃ§ar rotas inteligentes para seu destino.</p>
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<form role="form" method="POST" action="Cadastro" >
@@ -44,7 +45,7 @@
 				<div class="form-group">
 					<label for="usuarioInput">Usuario</label> <input type="text"
 						id="usuario" name="usuario" class="form-control"
-						placeholder="Digite um usuário válido" required >
+						placeholder="Digite um usuÃ¡rio vÃ¡lido" required >
 				</div>
 				<div class="form-group">
 					<label for="sehaInput">Senha</label> <input type="password"
@@ -54,7 +55,7 @@
 				<div class="form-group">
 					<label for="emailInput">email</label> <input type="email"
 						id="email" name="email" class="form-control"
-						placeholder="Digite um e-mail válido" required >
+						placeholder="Digite um e-mail vÃ¡lido" required >
 				</div>
 				<button type="submit" class="btn btn-primary">Enviar</button>
 			</form>
