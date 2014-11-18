@@ -73,11 +73,35 @@
             },
             handleRegister: function (form, event) {
             		if($('#registerEmail').val() == " " && $('#registerLogin').val() == " " && $('#registerSenha').val() == " "){
-            			alert("Todos os campos s„o obrigatÛrios");
+            			alert("Todos os campos s√£o obriga√≥rios");
             		}
             		else{
-            			console.log($('#registerEmail').val());
-            			form.submit();
+            			var datastring = form.serialize();
+            			            			
+            			$.ajax({
+            	            type: "POST",
+            	            url: "Cadastro",
+            	            data: datastring,
+            	            dataType: "json",
+            	            
+            	            beforeSend: function(xhr) {
+            	                xhr.setRequestHeader("Accept", "application/json");
+            	            },
+            	            success: function(data) {
+            	            	console.log("Success");
+            	                console.log(data);
+
+            	                $('.apollo-register:visible, .apollo-forgotten-password:visible').fadeOut(350, function(){
+            	                	$('.apollo-login').fadeIn(350);
+            	                	$('#usuario').val(data['login']);
+            	                	$('#senha').val(data['senha']);
+            	                });
+            	            },
+            	            error: function(data){
+            	            	console.log(data);
+            	            	alert(data);
+            	            }
+            	        });
             		}
             },
             handleForgottenPassword: function(form){

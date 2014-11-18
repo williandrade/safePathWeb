@@ -5,14 +5,14 @@ public class Locais {
 	private String nome;
 	private double latitude;
 	private double longitude;
-	private int prioridade;
+	private String descricao;
 
-	public Locais(String nome, double latitude, double longitude, int prioridade) {
+	public Locais(String nome, double latitude, double longitude, String descricao) {
 		super();
 		this.nome = nome;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.prioridade = prioridade;
+		this.setDescricao(descricao);
 	}
 
 	public String getNome() {
@@ -33,11 +33,13 @@ public class Locais {
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	public int getPrioridade() {
-		return prioridade;
+
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setPrioridade(int prioridade) {
-		this.prioridade = prioridade;
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	

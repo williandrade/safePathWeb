@@ -6,7 +6,7 @@ import com.up.model.Usuario;
 
 public interface UsuarioService {
 
-	public void addUsuario(Usuario user);
+	public Usuario addUsuario(Usuario user);
     public void updateUsuario(Usuario p);
     public List<Usuario> listUsuario();
     public Usuario getUsuarioById(String id);

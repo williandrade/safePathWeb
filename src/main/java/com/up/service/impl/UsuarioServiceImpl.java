@@ -20,32 +20,34 @@ public class UsuarioServiceImpl implements UsuarioService{
 	
 	@Override
 	@Transactional
-	public void addUsuario(Usuario user) {
+	public Usuario addUsuario(Usuario user) {
 		// TODO Auto-generated method stub
-		this.usuarioDAO.save(user);
+		return this.usuarioDAO.save(user);
 	}
 
 	@Override
+	@Transactional
 	public void updateUsuario(Usuario p) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	@Transactional
 	public List<Usuario> listUsuario() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public Usuario getUsuarioById(String id) {
 		// TODO Auto-generated method stub
-		this.usuarioDAO.get(id);
-		
-		return null;
+		return this.usuarioDAO.get(id);
 	}
 
 	@Override
+	@Transactional
 	public void removeUsuario(String id) {
 		// TODO Auto-generated method stub
 		

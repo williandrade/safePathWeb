@@ -1,16 +1,15 @@
 package com.up.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.up.model.Usuario;
 import com.up.service.UsuarioService;
 
@@ -27,12 +26,14 @@ public class CadastroController {
 		return model;
 	}
 	
-	@RequestMapping(value="/Cadastro", method=RequestMethod.POST)
-	public ModelAndView cadastrar(@RequestParam(value="email")String email,
-								  @RequestParam(value="senha")String senha,
-								  @RequestParam(value="login")String login,
-								  @RequestParam(value="primeiroNome")String primeiroNome,
-								  @RequestParam(value="segundoNome")String segundoNome){
+	@RequestMapping(value="/Cadastro", method = RequestMethod.POST, 
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String cadastrar(@RequestParam(value="email")String email,
+						   @RequestParam(value="senha")String senha,
+						   @RequestParam(value="login")String login,
+						   @RequestParam(value="primeiroNome")String primeiroNome,
+						   @RequestParam(value="segundoNome")String segundoNome){
 		Usuario user = new Usuario();
 
 		user.setEmail(email);
@@ -40,11 +41,11 @@ public class CadastroController {
 		user.setSenha(senha);
 		user.setNome(primeiroNome+" "+segundoNome);
 		
-		usuarioService.addUsuario(user);
+		Usuario novo = usuarioService.addUsuario(user);
+		Gson gson = new Gson();
 		
-		ModelAndView model = new ModelAndView("Principal");
-		model.addObject("usuario", user);
+		String retorno = gson.toJson(novo);
 		
-		return model;
+		return retorno;
 	}
 }

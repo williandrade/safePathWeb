@@ -21,6 +21,7 @@
   <script type="text/javascript" src="http://ehesp.github.io/Responsive-Dashboard/js/angular-cookies.js"></script>
   <script type="text/javascript" src="http://ehesp.github.io/Responsive-Dashboard/js/ng-bootstrap-tpls.min.js"></script>
   <script type="text/javascript" src="http://ehesp.github.io/Responsive-Dashboard/js/angular/bootstrap.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   <script type="text/javascript" src="<c:url value="resources/js/jquery-git2.js" />"></script>
 
 
@@ -83,7 +84,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                   <li class="dropdown-header">
-                    ${nome}
+                    ${usuario.getNome()}
                   </li>
                   <li class="divider"></li>
                   <li class="link">

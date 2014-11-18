@@ -29,9 +29,23 @@ public class PrincipalController {
 	public String getLocais(){
 		List<Locais> tudo = new ArrayList<Locais>();
 		
-		tudo.add(new Locais("William", -25.472958, -49.125149, 1));
-		tudo.add(new Locais("Maria", -25.472958, -49.124149, 2));
-		tudo.add(new Locais("Jose", -25.472958, -49.123149, 3));
+		StringBuffer html = new StringBuffer();
+		
+		html.append("<div class='row'>");
+		html.append("<div class='col-md-12'>");
+		html.append("Assalto de Carro");
+		html.append("<hr style='margin-top: 0px;'>");
+		html.append("</div>");
+		html.append("<div class='col-md-10'>");
+		html.append("<span class='label label-danger' style='margin: 5px;'>Carteira</span>");
+		html.append("<span class='label label-danger' style='margin: 5px;'>Celular</span>");
+		html.append("</div>");
+		html.append("<div class='col-md-1'>");
+		html.append("<span class='glyphicon glyphicon glyphicon-chevron-right' aria-hidden='true'></span>");
+		html.append("</div>");
+		html.append("</div>");
+		
+		tudo.add(new Locais("William", -25.472958, -49.125149, html.toString()));
 		
 		Gson gson = new Gson();
 		

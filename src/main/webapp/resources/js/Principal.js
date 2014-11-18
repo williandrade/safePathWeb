@@ -1,11 +1,15 @@
 var map;
+var baseURL;
 var locais = [];
 var iterator = 0;
 var markers = [];
 
 $(document).ready(function() {
 
+	baseURL = getBaseURL();
+	
 	google.maps.event.addDomListener(window, 'load', initialize);
+	
 });
 
 function getLocais() {
@@ -37,11 +41,14 @@ function initialize() {
 					position.coords.longitude);
 
 			map.setCenter(pos);
-			map.setZoom(10);
+			map.setZoom(15);
 			
 			getLocais();
 		}, function() {
 			handleNoGeolocation(true);
+		});
+		google.maps.event.addListener(map, 'dblclick', function(event) {
+			$('#myModal').modal('show');
 		});
 	} else {
 		// Browser doesn't support Geolocation
@@ -78,15 +85,38 @@ function addMarker() {
 	var marker = new google.maps.Marker({
 		position : new google.maps.LatLng(locais[iterator].latitude, locais[iterator].longitude),
 		map : map,
+		icon:  baseURL+'/resources/img/marker5-3.png',
 		draggable : false,
 		animation : google.maps.Animation.DROP
 	});
 	var infowindow = new google.maps.InfoWindow({
-	      content: 'Teste'
+	      content: locais[iterator].descricao
 	  });
 	google.maps.event.addListener(marker, 'click', function() {
 	    infowindow.open(map,marker);
 	  });
 	markers.push(marker);
 	iterator++;
+}
+
+function getBaseURL() {
+    var url = location.href;  // entire url including querystring - also: window.location.href;
+    var baseURL = url.substring(0, url.indexOf('/', 14));
+
+
+    if (baseURL.indexOf('http://localhost') != -1) {
+        // Base Url for localhost
+        var url = location.href;  // window.location.href;
+        var pathname = location.pathname;  // window.location.pathname;
+        var index1 = url.indexOf(pathname);
+        var index2 = url.indexOf("/", index1 + 1);
+        var baseLocalUrl = url.substr(0, index2);
+
+        return baseLocalUrl + "/";
+    }
+    else {
+        // Root Url for domain name
+        return baseURL + "/";
+    }
+
 }
