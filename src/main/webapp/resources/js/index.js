@@ -76,6 +76,7 @@
             			alert("Todos os campos são obrigaórios");
             		}
             		else{
+<<<<<<< HEAD
             			var datastring = form.serialize();
             			            			
             			$.ajax({
@@ -102,6 +103,24 @@
             	            	alert(data);
             	            }
             	        });
+=======
+            			console.log($('#registerEmail').val());
+            			
+            			$.ajax({
+            		        url: "Cadastro",
+            		        type: "POST",
+            		        data: form.serialize(),
+            		        beforeSend: function(xhr) {
+            		            xhr.setRequestHeader("Accept", "application/json");
+            		        },
+            		        success: function(resp) {
+            		        	console.log(resp);
+            		        },
+            		        error: function(errorMessage) {
+            	                   console.log(errorMessage);
+        	                }
+            		    });
+>>>>>>> FETCH_HEAD
             		}
             },
             handleForgottenPassword: function(form){

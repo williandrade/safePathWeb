@@ -36,10 +36,10 @@ public class CadastroController {
 						   @RequestParam(value="segundoNome")String segundoNome){
 		Usuario user = new Usuario();
 
-		user.setEmail(email);
-		user.setLogin(login);
-		user.setSenha(senha);
-		user.setNome(primeiroNome+" "+segundoNome);
+		user.setUserNome(primeiroNome + segundoNome);
+		user.setUserEmail(email);
+		user.setUserLogin(login);
+		user.setUserPass(senha);
 		
 		Usuario novo = usuarioService.addUsuario(user);
 		Gson gson = new Gson();
