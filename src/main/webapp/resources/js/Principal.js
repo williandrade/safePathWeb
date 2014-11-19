@@ -10,6 +10,33 @@ $(document).ready(function() {
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
 	
+	$('#feedBackForm').submit(function (e) {
+		var datastring = $(this).serialize();
+		console.log(datastring);
+		e.preventDefault();
+		
+        $.ajax({
+            type: "POST",
+            url: "feedBack",
+            data: datastring,
+            dataType: "json",
+            
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Accept", "application/json");
+            },
+            success: function(data) {
+            	console.log("Success");
+                console.log(data);
+
+                $('#feedback-modal').modal('hide');
+            },
+            error: function(data){
+            	console.log(data);
+            	alert(data);
+            }
+        });
+    });
+	
 });
 
 function getLocais() {

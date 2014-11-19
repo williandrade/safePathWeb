@@ -76,7 +76,6 @@
             			alert("Todos os campos são obrigaórios");
             		}
             		else{
-<<<<<<< HEAD
             			var datastring = form.serialize();
             			            			
             			$.ajax({
@@ -92,35 +91,14 @@
             	            	console.log("Success");
             	                console.log(data);
 
-            	                $('.apollo-register:visible, .apollo-forgotten-password:visible').fadeOut(350, function(){
-            	                	$('.apollo-login').fadeIn(350);
-            	                	$('#usuario').val(data['login']);
-            	                	$('#senha').val(data['senha']);
-            	                });
+            	                window.location.replace("Principal?usuario="+JSON.stringify(data));
             	            },
             	            error: function(data){
             	            	console.log(data);
             	            	alert(data);
             	            }
             	        });
-=======
             			console.log($('#registerEmail').val());
-            			
-            			$.ajax({
-            		        url: "Cadastro",
-            		        type: "POST",
-            		        data: form.serialize(),
-            		        beforeSend: function(xhr) {
-            		            xhr.setRequestHeader("Accept", "application/json");
-            		        },
-            		        success: function(resp) {
-            		        	console.log(resp);
-            		        },
-            		        error: function(errorMessage) {
-            	                   console.log(errorMessage);
-        	                }
-            		    });
->>>>>>> FETCH_HEAD
             		}
             },
             handleForgottenPassword: function(form){

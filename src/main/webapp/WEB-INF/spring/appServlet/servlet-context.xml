@@ -31,7 +31,7 @@
 		<beans:property name="url"
 			value="jdbc:mysql://localhost/safepath" />
 		<beans:property name="username" value="root" />
-		<beans:property name="password" value="" />
+		<beans:property name="password" value="root" />
 	</beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
@@ -40,7 +40,14 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
+				<beans:value>com.up.model.Assalto</beans:value>
+				<beans:value>com.up.model.AssaltoCidade</beans:value>
+				<beans:value>com.up.model.AssaltoCidadePK</beans:value>
+				<beans:value>com.up.model.AssaltoTipo</beans:value>
+				<beans:value>com.up.model.CidadeBairro</beans:value>
+				<beans:value>com.up.model.Feedback</beans:value>
 				<beans:value>com.up.model.Usuario</beans:value>
+				<beans:value>com.up.model.VeiculoTipo</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -53,12 +60,22 @@
 		</beans:property>
 	</beans:bean>
 
+
+	<!-- DAO -->
 	<beans:bean id="usuarioDAO" class="com.up.dao.impl.UsuarioDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
+	<beans:bean id="feedBackDAO" class="com.up.dao.impl.FeedBackDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
 	
+	
+	<!-- Service -->
 	<beans:bean id="usuarioService" class="com.up.service.impl.UsuarioServiceImpl">
         <beans:property name="usuarioDAO" ref="usuarioDAO"></beans:property>
+    </beans:bean>
+	<beans:bean id="feedBackService" class="com.up.service.impl.FeedBackServiceImpl">
+        <beans:property name="feedBackDAO" ref="feedBackDAO"></beans:property>
     </beans:bean>
 	
 	<context:component-scan base-package="com.up.controller" />

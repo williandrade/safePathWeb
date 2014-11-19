@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import com.up.util.BaseDAO;
@@ -21,15 +22,8 @@ public class Feedback extends BaseDAO {
 	@Column(name = "FEEDBACK_TEXT")
 	private String feedbackText;
 
-	@Column(name = "FEEDBACK_USER")
-	private String feedbackUser;
-
-	public Feedback(String feedbackText, String feedbackUser) {
-		super();
-		this.feedbackText = feedbackText;
-		this.feedbackUser = feedbackUser;
-
-	}
+	@JoinColumn(name = "FEEDBACK_USER")
+	private Usuario feedbackUser;
 
 	public String getFeedbackText() {
 		return feedbackText;
@@ -39,11 +33,11 @@ public class Feedback extends BaseDAO {
 		this.feedbackText = feedbackText;
 	}
 
-	public String getFeedbackUser() {
+	public Usuario getFeedbackUser() {
 		return feedbackUser;
 	}
 
-	public void setFeedbackUser(String feedbackUser) {
+	public void setFeedbackUser(Usuario feedbackUser) {
 		this.feedbackUser = feedbackUser;
 	}
 

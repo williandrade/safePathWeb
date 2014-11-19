@@ -21,9 +21,10 @@
   <script type="text/javascript" src="http://ehesp.github.io/Responsive-Dashboard/js/angular-cookies.js"></script>
   <script type="text/javascript" src="http://ehesp.github.io/Responsive-Dashboard/js/ng-bootstrap-tpls.min.js"></script>
   <script type="text/javascript" src="http://ehesp.github.io/Responsive-Dashboard/js/angular/bootstrap.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   <script type="text/javascript" src="<c:url value="resources/js/jquery-git2.js" />"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  
 
 
 </head>
@@ -85,7 +86,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                   <li class="dropdown-header">
-                    ${usuario.getNome()}
+                    ${usuario.getUserNome()}
                   </li>
                   <li class="divider"></li>
                   <li class="link">
