@@ -14,7 +14,42 @@
         <h4 class="modal-title" id="myModalLabel">Adicionar Assalto</h4>
       </div>
       <div class="modal-body">
-			
+			<form class="form-horizontal" role="form" id="novoAssaltoForm">
+			  <div class="form-group">
+			    <label for="inputTipo" class="col-sm-2 control-label">Tipo de Assalto</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="tipoDeAssalto" name="tipoDeAssalto" placeholder="Tipo de Assalto">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputObj" class="col-sm-2 control-label">Objetos Roubados</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="objRoubados" name="objRoubados" placeholder="Objetos Roubados">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="descricao" class="col-sm-2 control-label">Descrição</label>
+			    <div class="col-sm-10">
+			      <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição"></textarea>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <div class="checkbox">
+			        <label>
+			          <input type="checkbox" name="maoArmada" value="maoArmada"> Mão Armada
+			        </label>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Enviar</button>
+			    </div>
+			  </div>
+		      <input type="hidden" name="usuario" value="${usuario.getUserLogin()}"/>
+			</form>
       </div>
     </div>
   </div>

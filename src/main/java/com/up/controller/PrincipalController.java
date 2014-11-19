@@ -72,6 +72,19 @@ public class PrincipalController {
 		return retorno;
 	}
 	
+	
+	@RequestMapping(value="/novoAssalto", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String novoAssalto(@RequestParam(value="tipoDeAssalto")String tipoAssalto,
+							  @RequestParam(value="objRoubados")String objRoubados,
+							  @RequestParam(value="Descrição")String descricao,
+							  @RequestParam(value="maoArmada", required = false, defaultValue = "")String maoArmada){
+		
+		System.out.println("asdasda");
+		
+		return null;
+	}
+	
 	@RequestMapping(value= "/getLocais", method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -94,7 +107,11 @@ public class PrincipalController {
 		html.append("</div>");
 		html.append("</div>");
 		
-		tudo.add(new Locais("William", -25.472958, -49.125149, html.toString()));
+		tudo.add(new Locais("Positivo", -25.472958, -49.125149, html.toString()));
+		tudo.add(new Locais("Positivo", -25.447072, -49.359199, html.toString()));
+		tudo.add(new Locais("Positivo", -25.451488, -49.364695, html.toString()));
+		tudo.add(new Locais("ALL", -25.574080, -49.370684, html.toString()));
+		tudo.add(new Locais("Palladium", -25.477242, -49.291291, html.toString()));
 		
 		Gson gson = new Gson();
 		
