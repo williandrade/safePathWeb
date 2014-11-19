@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.up.model.Usuario;
+import com.up.dto.UsuarioDto;
 import com.up.service.UsuarioService;
 
 @Controller
@@ -20,20 +20,16 @@ public class LoginController {
 	public ModelAndView login(@RequestParam(value="usuario")String nome, 
 							  @RequestParam(value="senha")String senha) {
 		
-		ModelAndView model;
+		ModelAndView model = new ModelAndView("Principal");
 		
 		try{
-			Usuario atual = usuarioService.getUsuarioById(nome);
+			UsuarioDto atual = usuarioService.getUsuarioById(nome);
 
 			if(atual.getUserPass().equals(senha)){
-				model = new ModelAndView("Principal");
 				model.addObject("usuario", atual);
-			}else{
-				model = new ModelAndView("Cadastro");
-			}
-			
+			}	
 		}catch(Exception e){
-			model = new ModelAndView("Cadastro");
+			return null;
 		}
 		
 		return model;

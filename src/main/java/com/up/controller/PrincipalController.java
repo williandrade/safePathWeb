@@ -3,6 +3,7 @@ package com.up.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.up.dto.FeedbackDto;
+import com.up.dto.UsuarioDto;
 import com.up.model.Feedback;
 import com.up.model.Usuario;
 import com.up.service.FeedBackService;
@@ -35,12 +38,12 @@ public class PrincipalController {
 		return model;
 	}
 	
-	@RequestMapping(value="/Principal", method=RequestMethod.GET)
-	public ModelAndView doGet(@RequestParam(value="usuario")String usuario){
+	@RequestMapping(value="/PrincipalLogado", method=RequestMethod.GET)
+	public ModelAndView doGet(@RequestParam(value="usuario", required = false)String usuario){
 		ModelAndView model = new ModelAndView("Principal");
 		
 		Gson gson = new Gson();
-		Usuario retorno = gson.fromJson(usuario, Usuario.class);
+		UsuarioDto retorno = gson.fromJson(usuario, UsuarioDto.class);
 		
 		model.addObject("usuario", retorno);
 		
@@ -52,15 +55,21 @@ public class PrincipalController {
 	public String feedBack(@RequestParam(value="feedbackText")String feedbackText,
 						   @RequestParam(value="usuario")String usuario){
 
-		Usuario feedbackUser = usuarioService.getUsuarioById(usuario);
+		UsuarioDto user = usuarioService.getUsuarioById(usuario);
+		ModelMapper modelMapper = new ModelMapper();
 		
-		Feedback feed = new Feedback();
+		Usuario feedbackUser = modelMapper.map(user, Usuario.class); 
+		
+		FeedbackDto feed = new FeedbackDto();
 		feed.setFeedbackText(feedbackText);
 		feed.setFeedbackUser(feedbackUser);
 		
-		Feedback retorno = feedBackService.addFeedBack(feed);
+		FeedbackDto saved = feedBackService.addFeedBack(feed);
 		
-		return null;
+		Gson gson = new Gson();
+		String retorno = gson.toJson(saved, Feedback.class);
+		
+		return retorno;
 	}
 	
 	@RequestMapping(value= "/getLocais", method = RequestMethod.POST, 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.up.model.Usuario;
+import com.up.dto.UsuarioDto;
 import com.up.service.UsuarioService;
 
 @Controller
@@ -34,14 +34,14 @@ public class CadastroController {
 						   @RequestParam(value="login")String login,
 						   @RequestParam(value="primeiroNome")String primeiroNome,
 						   @RequestParam(value="segundoNome")String segundoNome){
-		Usuario user = new Usuario();
+		UsuarioDto user = new UsuarioDto();
 
 		user.setUserNome(primeiroNome+" "+segundoNome);
 		user.setUserEmail(email);
 		user.setUserLogin(login);
 		user.setUserPass(senha);
 		
-		Usuario novo = usuarioService.addUsuario(user);
+		UsuarioDto novo = usuarioService.addUsuario(user);
 		Gson gson = new Gson();
 		
 		String retorno = gson.toJson(novo);

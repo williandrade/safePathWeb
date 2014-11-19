@@ -13,7 +13,6 @@ $(document).ready(function() {
 	$('#feedBackForm').submit(function (e) {
 		var datastring = $(this).serialize();
 		console.log(datastring);
-		e.preventDefault();
 		
         $.ajax({
             type: "POST",
@@ -32,9 +31,10 @@ $(document).ready(function() {
             },
             error: function(data){
             	console.log(data);
-            	alert(data);
+            	alert(data.responseText);
             }
         });
+        e.preventDefault();
     });
 	
 });
@@ -75,7 +75,7 @@ function initialize() {
 			handleNoGeolocation(true);
 		});
 		google.maps.event.addListener(map, 'dblclick', function(event) {
-			$('#myModal').modal('show');
+			$('#cadastroAssalto').modal('show');
 		});
 	} else {
 		// Browser doesn't support Geolocation

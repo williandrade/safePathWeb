@@ -28,16 +28,16 @@
                     });
                 });
 
-                $('.apollo-register-account .password-link').click(function (e) {
-                    e.preventDefault();
-
-                    $('.apollo-login').fadeOut(350, function(){
-                    	$('.apollo-forgotten-password').fadeIn(350, function(){
-                    		$('.apollo-forgotten-password input:first').focus();
-                    	});
-                    	$('.apollo').addClass('forgotten-password');
-                    });
-                });
+//                $('.apollo-register-account .password-link').click(function (e) {
+//                    e.preventDefault();
+//
+//                    $('.apollo-login').fadeOut(350, function(){
+//                    	$('.apollo-forgotten-password').fadeIn(350, function(){
+//                    		$('.apollo-forgotten-password input:first').focus();
+//                    	});
+//                    	$('.apollo').addClass('forgotten-password');
+//                    });
+//                });
 
                 $('#apollo-register-form').submit(function(e){
                 	e.preventDefault();
@@ -95,7 +95,7 @@
             	            },
             	            error: function(data){
             	            	console.log(data);
-            	            	alert(data);
+            	            	alert(data.responseText);
             	            }
             	        });
             			console.log($('#registerEmail').val());

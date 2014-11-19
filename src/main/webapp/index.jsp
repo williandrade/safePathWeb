@@ -109,8 +109,8 @@
 
 					<p class="apollo-register-account">
 						<a href="#" class="register-link">Não possui uma conta? <strong>Registre
-						</strong><i class="icon-arrow-right"></i></a><br> <a href="#"
-							class="password-link"><small>Esqueceu a senha?</small></a>
+						</strong><i class="icon-arrow-right"></i></a><br> <a href="Principal"
+							class="password-link"><small>Entrar sem Login</small></a>
 					</p>
 				</div>
 
