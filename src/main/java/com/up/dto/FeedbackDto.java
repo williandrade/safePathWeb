@@ -4,9 +4,19 @@ import com.up.model.Usuario;
 
 public class FeedbackDto {
 
+	private int feedbackId;
+	
 	private String feedbackText;
 
 	private Usuario feedbackUser;
+
+	public int getFeedbackId() {
+		return feedbackId;
+	}
+
+	public void setFeedbackId(int feedbackId) {
+		this.feedbackId = feedbackId;
+	}
 
 	public String getFeedbackText() {
 		return feedbackText;
@@ -23,5 +33,7 @@ public class FeedbackDto {
 	public void setFeedbackUser(Usuario feedbackUser) {
 		this.feedbackUser = feedbackUser;
 	}
+	
+	
 	
 }

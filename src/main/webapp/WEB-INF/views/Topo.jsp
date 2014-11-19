@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Dashboard</title>
+	<title>Principal</title>
 
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="http://ehesp.github.io/Responsive-Dashboard/css/font-awesome.min.css">

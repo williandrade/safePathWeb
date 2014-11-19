@@ -67,7 +67,7 @@ public class PrincipalController {
 		FeedbackDto saved = feedBackService.addFeedBack(feed);
 		
 		Gson gson = new Gson();
-		String retorno = gson.toJson(saved, Feedback.class);
+		String retorno = gson.toJson(saved, FeedbackDto.class);
 		
 		return retorno;
 	}

@@ -25,6 +25,14 @@ public class Feedback extends BaseDAO {
 	@JoinColumn(name = "FEEDBACK_USER")
 	private Usuario feedbackUser;
 
+	public int getFeedbackId() {
+		return feedbackId;
+	}
+
+	public void setFeedbackId(int feedbackId) {
+		this.feedbackId = feedbackId;
+	}
+	
 	public String getFeedbackText() {
 		return feedbackText;
 	}

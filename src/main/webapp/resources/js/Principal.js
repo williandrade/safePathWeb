@@ -5,7 +5,8 @@ var iterator = 0;
 var markers = [];
 
 $(document).ready(function() {
-
+	jQuery.noConflict();
+	
 	baseURL = getBaseURL();
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
@@ -75,7 +76,9 @@ function initialize() {
 			handleNoGeolocation(true);
 		});
 		google.maps.event.addListener(map, 'dblclick', function(event) {
-			$('#cadastroAssalto').modal('show');
+			$('#cadastroAssalto').modal({
+            	show: true
+            });
 		});
 	} else {
 		// Browser doesn't support Geolocation
