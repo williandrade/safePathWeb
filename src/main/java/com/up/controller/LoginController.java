@@ -25,7 +25,7 @@ public class LoginController {
 		try{
 			Usuario atual = usuarioService.getUsuarioById(nome);
 
-			if(atual.getSenha().equals(senha)){
+			if(atual.getUserPass().equals(senha)){
 				model = new ModelAndView("Principal");
 				model.addObject("usuario", atual);
 			}else{
